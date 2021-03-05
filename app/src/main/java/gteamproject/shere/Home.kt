@@ -1,11 +1,13 @@
 package gteamproject.shere
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.synnapps.carouselview.CarouselView
 
@@ -19,9 +21,10 @@ class Home : Fragment() {
         R.drawable.uk
     )
 
-    var cities = arrayOf("Paris", "Dubai", "United Kingdom", "Moscow")
+    var carouselView = arrayOfNulls<CarouselView>(5)
+    var carouselViewId = arrayOf(R.id.carouselView1, R.id.carouselView2, R.id.carouselView3, R.id.carouselView4, R.id.carouselView5)
 
-    lateinit var carouselView: CarouselView
+    lateinit var insideText: TextView
 
     companion object{
         const val TAG : String = "로그"
@@ -59,11 +62,14 @@ class Home : Fragment() {
 
         val view = inflater.inflate(R.layout.home, container, false)
 
-        carouselView = view.findViewById(R.id.carouselView)
+        for (i in carouselView.indices) {
+            carouselView[i] = view.findViewById(carouselViewId[i])
 
-        carouselView.pageCount = cities.size
-        carouselView.setImageListener { position, imageView ->
-            imageView.setImageResource(sampleImages[position])
+            carouselView[i]?.pageCount = sampleImages.size
+            carouselView[i]?.setImageListener { position, imageView ->
+                imageView.setImageResource(sampleImages[position])
+            }
+
         }
 
         return view
