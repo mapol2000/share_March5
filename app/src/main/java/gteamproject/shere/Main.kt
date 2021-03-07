@@ -9,6 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class Main : AppCompatActivity(){
 
     private lateinit var home: Home
+    private lateinit var magazine: Magazine
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +28,12 @@ class Main : AppCompatActivity(){
                 home = Home.newInstance()
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_frame, home).commit()
             }
+
+            R.id.menu_magazine -> {
+                magazine = Magazine.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_frame, magazine).commit()
+            }
+
         }
         true
     }
