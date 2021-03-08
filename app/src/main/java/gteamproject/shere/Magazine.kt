@@ -15,6 +15,7 @@ import gteamproject.shere.adapters.MagazineRecyclerAdapter
 class Magazine: Fragment() {
 
     private var imageList = mutableListOf<Int>()
+    private var titleList = mutableListOf<String>()
     private var briefList = mutableListOf<String>()
     private var publisherList = mutableListOf<String>()
 
@@ -46,7 +47,7 @@ class Magazine: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view!!.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = MagazineRecyclerAdapter(imageList, briefList, publisherList)
+        recyclerView.adapter = MagazineRecyclerAdapter(imageList, titleList, briefList, publisherList)
     }
 
     override fun getContext() = super.getContext()!!
@@ -61,15 +62,16 @@ class Magazine: Fragment() {
         return view
     }
 
-    private fun addToList(image: Int, brief: String, publisher: String) {
+    private fun addToList(image: Int, title: String, brief: String, publisher: String) {
         imageList.add(image)
+        titleList.add(title)
         briefList.add(brief)
         publisherList.add(publisher)
     }
 
     private fun postToList() {
         for (i in 1..25) {
-            addToList(R.drawable.dubai, "본문내용 $i", "작성자 $i")
+            addToList(R.drawable.dubai, "제목 $i", "내용 $i", "작성자 $i")
         }
 
     }

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Shere">
-        <activity android:name=".Main"></activity>
+        <activity android:name=".Magazine_Detail"></activity>
+        <activity android:name=".Main" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
